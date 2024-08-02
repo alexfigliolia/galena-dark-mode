@@ -97,4 +97,4 @@ export const App = memo(function App() {
 ### Demo
 The following demo uses CSS Custom properties for a smooth transition between themes. This feature is not available in all browsers, but [baseline support](https://caniuse.com/?search=css%20custom%20properties) is growing.
 
-![Demo](media/demo.gif | height=300px)
+![Demo](media/demo.gif)
