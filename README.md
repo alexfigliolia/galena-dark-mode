@@ -26,6 +26,11 @@ Theme.toggle();
 // Set Dark or Light Mode
 Theme.set("<dark | light>");
 
+// Listen for changes
+Theme.subscribe(({ theme }) => {
+  // Your logic
+})
+
 // Clean up and remove operating system listeners
 Theme.destroy();
 ```
@@ -61,7 +66,7 @@ The when calling `new DarkModeManager()`, a `State` instance is returned. You ca
 ```typescript
 // Theme.ts
 
-import { DarkModeManager } from "@figlioliag/galena-dark-mode";
+import { DarkModeManager } from "@figliolia/galena-dark-mode";
 import { createUseState, createUseMutation } from "@figliolia/react-galena";
 
 export const Theme = new DarkModeManager();
@@ -73,7 +78,7 @@ You can also initialize and destroy your theme instance in your root component:
 ```tsx
 // App.tsx
 
-import { useLayoutEffect, memo, useCallback } from "react";
+import { memo } from "react";
 import { useSetup } from "@figliolia/galena-dark-mode";
 import { Theme, useTheme } from "./Theme";
 
