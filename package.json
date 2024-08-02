@@ -1,7 +1,7 @@
 {
   "name": "@figliolia/galena-dark-mode",
-  "version": "1.0.1",
-  "description": "A Dark Mode Manager for applications using Galena",
+  "version": "1.0.0",
+  "description": "A Dark Mode Manager for Galena Apps",
   "author": "Alex Figliolia",
   "scripts": {
     "build": "ts-packager -e src",
