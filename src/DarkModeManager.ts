@@ -23,7 +23,7 @@ export class DarkModeManager extends State<ITheme> {
   }
 
   public destroy() {
-    this.matcher?.removeEventListener("change", this.themeChange);
+    this.matcher?.removeEventListener?.("change", this.themeChange);
     this.unsubscribe(this.listener);
   }
 
