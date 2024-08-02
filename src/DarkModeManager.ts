@@ -21,6 +21,7 @@ export class DarkModeManager extends State<ITheme> {
     this.matcher?.removeEventListener?.("change", this.onOSSettingsChange);
     if (this.listener) {
       this.unsubscribe(this.listener);
+      this.listener = undefined;
     }
   }
 
