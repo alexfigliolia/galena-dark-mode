@@ -1,6 +1,6 @@
 {
   "name": "@figliolia/galena-dark-mode",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Dark Mode Manager for Galena Apps",
   "author": "Alex Figliolia",
   "scripts": {
@@ -27,12 +27,12 @@
   ],
   "dependencies": {},
   "peerDependencies": {
-    "@figliolia/galena": "^2.3.1",
+    "@figliolia/galena": "^2.3.2",
     "react": "^18.3.1"
   },
   "devDependencies": {
     "@figliolia/child-process": "^1.0.1",
-    "@figliolia/galena": "^2.3.1",
+    "@figliolia/galena": "^2.3.2",
     "@figliolia/ts-packager": "^1.0.9",
     "@types/jest": "^29.5.10",
     "@types/node": "^20.11.19",
