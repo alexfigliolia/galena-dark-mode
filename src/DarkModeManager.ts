@@ -13,6 +13,7 @@ export class DarkModeManager extends State<ITheme> {
   }
 
   public initialize() {
+    this.subscribeInternal();
     this.subscribeOS();
   }
 
