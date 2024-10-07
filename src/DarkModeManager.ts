@@ -5,15 +5,14 @@ export class DarkModeManager extends State<ITheme> {
   private listener?: string;
   private matcher?: MediaQueryList;
   private onThemeChange?: ThemeChangeEvent;
-  constructor(onThemeChange?: ThemeChangeEvent) {
-    super("Theme", { theme: "light" });
-    this.updateDocument("light");
+  constructor(theme: IThemeName = "light", onThemeChange?: ThemeChangeEvent) {
+    super("Theme", { theme });
+    this.updateDocument(theme);
     this.onThemeChange = onThemeChange;
     this.subscribeInternal();
   }
 
   public initialize() {
-    this.subscribeInternal();
     this.subscribeOS();
   }
 

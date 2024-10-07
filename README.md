@@ -13,7 +13,9 @@ yarn add @figliolia/galena @figliolia/galena-dark-mode
 // Theme.ts
 import { DarkModeManager } from "@figliolia/galena-dark-mode";
 
-export const Theme = new DarkModeManager(theme => {
+export const Theme = new DarkModeManager(
+  initialTheme /* light by default */, 
+  theme => {
   // Optional callback to execute when theme changes
 });
 
@@ -26,7 +28,7 @@ Theme.toggle();
 // Set Dark or Light Mode
 Theme.set("<dark | light>");
 
-// Listen for changes
+// Listen for changes to the Theme State
 Theme.subscribe(({ theme }) => {
   // Your logic
 })

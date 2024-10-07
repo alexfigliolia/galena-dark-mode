@@ -1,6 +1,6 @@
 {
   "name": "@figliolia/galena-dark-mode",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "A Dark Mode Manager for Galena Apps",
   "author": "Alex Figliolia",
   "scripts": {
