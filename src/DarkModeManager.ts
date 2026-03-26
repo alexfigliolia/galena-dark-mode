@@ -1,14 +1,15 @@
 import { State } from "@figliolia/galena";
-import type { ITheme, IThemeName, ThemeChangeEvent } from "./types";
+import type { ITheme, ThemeChangeCallback } from "./types";
 
 export class DarkModeManager extends State<ITheme> {
-  private listener?: string;
+  private listener?: () => void;
   private matcher?: MediaQueryList;
-  private onThemeChange?: ThemeChangeEvent;
-  constructor(theme: IThemeName = "light", onThemeChange?: ThemeChangeEvent) {
-    super("Theme", { theme });
+  constructor(
+    theme: ITheme = "light",
+    public readonly onThemeChange?: ThemeChangeCallback,
+  ) {
+    super(theme);
     this.updateDocument(theme);
-    this.onThemeChange = onThemeChange;
     this.subscribeInternal();
   }
 
@@ -19,21 +20,13 @@ export class DarkModeManager extends State<ITheme> {
 
   public destroy() {
     this.matcher?.removeEventListener?.("change", this.onOSSettingsChange);
-    if (this.listener) {
-      this.unsubscribe(this.listener);
-      this.listener = undefined;
-    }
+    this.listener?.();
+    this.listener = undefined;
   }
 
   public toggle = () => {
-    this.set(this.getState().theme === "dark" ? "light" : "dark");
+    this.set(this.getSnapshot() === "dark" ? "light" : "dark");
   };
-
-  public set(theme: IThemeName) {
-    this.priorityUpdate(state => {
-      state.theme = theme;
-    });
-  }
 
   private subscribeInternal() {
     if (!this.listener) {
@@ -56,12 +49,12 @@ export class DarkModeManager extends State<ITheme> {
     this.set(e.matches ? "dark" : "light");
   };
 
-  private onChangeInternal = ({ theme }: ITheme) => {
+  private onChangeInternal = (theme: ITheme) => {
     this.updateDocument(theme);
     this.onThemeChange?.(theme);
   };
 
-  private updateDocument(theme: IThemeName) {
+  private updateDocument(theme: ITheme) {
     if (typeof document !== "undefined" && document.documentElement) {
       document.documentElement.setAttribute("data-theme", theme);
     }
