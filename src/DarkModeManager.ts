@@ -25,7 +25,7 @@ export class DarkModeManager extends State<ITheme> {
   }
 
   public toggle = () => {
-    this.set(this.getSnapshot() === "dark" ? "light" : "dark");
+    this.update(theme => (theme === "dark" ? "light" : "dark"));
   };
 
   private subscribeInternal() {

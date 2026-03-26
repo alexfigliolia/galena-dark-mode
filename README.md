@@ -29,7 +29,7 @@ Theme.toggle();
 Theme.set("<dark | light>");
 
 // Listen for changes to the Theme State
-Theme.subscribe(({ theme }) => {
+Theme.subscribe((theme) => {
   // Your logic
 })
 
@@ -63,45 +63,40 @@ npm i @figliolia/react-galena
 yarn add @figliolia/react-galena
 ```
 ### Basc Usage
-The when calling `new DarkModeManager()`, a `State` instance is returned. You can generate `useState` and `useMutation` hooks using:
+The when calling `new DarkModeManager()`, a `State` instance is returned. You can generate `useState` hooks using:
 
 ```typescript
 // Theme.ts
-
 import { DarkModeManager } from "@figliolia/galena-dark-mode";
-import { createUseState, createUseMutation } from "@figliolia/react-galena";
+import { createUseState } from "@figliolia/react-galena";
 
 export const Theme = new DarkModeManager();
 export const useTheme = createUseState(Theme);
-export const useThemeMutation = createUseMutation(Theme);
 ```
 You can also initialize and destroy your theme instance in your root component:
 
 ```tsx
 // App.tsx
-
 import { memo } from "react";
 import { useSetup } from "@figliolia/galena-dark-mode";
 import { Theme, useTheme } from "./Theme";
 
-export const App = memo(function App() {
+export function App() {
   // Initialize!
   useSetup(Theme);
-
   // Get the current theme
-  const theme = useTheme(({ theme }) => theme);
+  const [currentTheme, setTheme] = useTheme();
 
   return (
     <>
-      <p>The Current Theme: {theme}</p>
+      <p>The Current Theme: {currentTheme}</p>
       <button onClick={Theme.toggle}>
-        Go {theme === "dark" ? "Light" : "Dark"}
+        Go {currentTheme === "dark" ? "Light" : "Dark"}
       </button>
     </>
   );
-})
+}
 ```
 ### Demo
-The following demo uses CSS Custom properties for a smooth transition between themes. This feature is not available in all browsers, but [baseline support](https://caniuse.com/?search=css%20custom%20properties) is growing.
 
 ![Demo](media/toggle-demo.gif)
